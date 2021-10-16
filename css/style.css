@@ -1,0 +1,459 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: sans-serif;
+}
+
+header {
+  height: 75vh;
+  background: #bfe3dd;
+}
+
+a {
+  text-decoration: none;
+  color: #000;
+  text-transform: uppercase;
+  font-weight: 500;
+}
+
+a:hover {
+  color: #154093;
+}
+
+ul {
+  display: flex;
+  justify-content: center;
+  padding: 1rem 5rem 1rem 1rem;
+  list-style: none;
+}
+
+li {
+  padding-left: 1rem;
+}
+
+button {
+  cursor: pointer;
+  outline: none;
+  color: #fff;
+  border: 0;
+}
+
+input {
+  outline: none;
+  border: 0;
+}
+
+.my {
+  color: #42e065;
+}
+
+.cloud {
+  color: #00cde9;
+}
+
+.active {
+  display: inline-block;
+  position: relative;
+  color: #154093;
+}
+
+.active:after {
+  position: absolute;
+  content: "";
+  border-bottom: 4px solid #154093;
+  width: 100%;
+  transform: translateX(-50%);
+  bottom: -15px;
+  left: 50%;
+}
+
+header {
+  padding: 1rem 0;
+}
+
+header nav {
+  position: relative;
+  width: 70%;
+  margin: auto;
+  padding: 0.5rem 0;
+  display: flex;
+  justify-content: flex-end;
+  background: #fff;
+  border-radius: 53.5px;
+}
+
+header nav .brand h1 {
+  margin-left: 2rem;
+}
+
+header nav .brand img {
+  position: absolute;
+  top: 1rem;
+  left: .3rem;
+}
+
+header nav div {
+  margin-right: auto;
+}
+
+header nav div h1 {
+  font-size: 2.5rem;
+  font-weight: bold;
+  padding: 0 1.5rem;
+}
+
+/* Hero */
+
+header .hero {
+  display: flex;
+  width: 70%;
+  margin: auto;
+  padding: 15vh 0;
+}
+
+header .hero div:nth-child(1) h1,
+header .hero div:nth-child(1) button {
+  margin-top: 1rem;
+}
+
+header .hero div h1 {
+  color: #000e46;
+  text-transform: uppercase;
+  font-size: 2rem;
+  font-weight: 500;
+}
+
+header .hero div .get-started {
+  text-transform: uppercase;
+  padding: 1rem 2.5rem;
+  border-radius: 43px;
+  background: #264de4;
+  font-weight: bold;
+}
+
+header .hero div .get-started span {
+  position: relative;
+  left: 5px;
+  background: #2965f1;
+  border-radius: 360px;
+  padding: 0.5rem;
+  font-weight: 1000;
+}
+
+header .hero div .get-started:hover {
+  opacity: 0.9;
+}
+
+header .hero div:nth-child(2) img {
+  position: absolute;
+  top: 13vh;
+  right: 0;
+  padding-right: 3rem;
+  width: 515px;
+  height: 364px;
+}
+
+/* Search Section */
+
+.search-section {
+  width: 70%;
+  margin: auto;
+  margin-top: 3rem;
+}
+
+.search-section h1 {
+  text-transform: uppercase;
+  font-size: 2.5rem;
+  text-align: center;
+  margin-top: 2rem;
+}
+
+.search-section h1:nth-child(1) {
+  color: #00266f;
+}
+
+.search-section h1:nth-child(2) {
+  color: #0fccc1;
+}
+
+.search-section input {
+  width: 30vw;
+  display: block;
+  margin: 0 auto;
+  padding: 1.5rem;
+  border-radius: 57px;
+  border: 1px solid #0fccc1;
+}
+
+.search-section h1,
+.search-section input,
+.search-section div {
+  margin-top: 1rem;
+}
+
+.search-section div {
+  display: flex;
+  justify-content: center;
+}
+
+.search-section div div {
+  padding: 1rem 1rem;
+  font-size: 1.5rem;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+.search-section div div span {
+  font-size: 1rem;
+  color: #0fccc1;
+}
+
+/* Data Protection */
+
+.bg-blue-theme {
+  background: #f6f6f6;
+}
+
+.data-protected {
+  width: 70%;
+  margin: 2rem auto;
+  display: flex;
+  padding-bottom: 3.5rem;
+}
+
+.data-protected div h1 {
+  color: #000e46;
+  font-weight: 500;
+  font-size: 2rem;
+  margin-top: 2.5rem;
+}
+
+.data-protected div p {
+  margin-top: 2rem;
+  padding-right: 1rem;
+}
+
+.data-protected div button {
+  background: #fff;
+  color: #000;
+  padding: 0.7rem 4rem;
+  border-radius: 38px;
+  margin-top: 2rem;
+}
+
+.data-protected div button:hover {
+  opacity: 0.7;
+}
+
+.data-protected div img {
+  position: relative;
+  left: 7rem;
+  top: 2rem;
+  width: 527px;
+  height: 386px;
+}
+
+/* Client Support */
+
+.client-support {
+  width: 40%;
+  margin: auto;
+}
+
+.client-support div h1 {
+  margin-top: 2.5rem;
+  font-size: 2.5rem;
+  font-weight: 500;
+}
+
+.client-support div div {
+  position: relative;
+  margin: 2rem 0;
+  padding-left: 4rem;
+}
+
+.client-support div div img {
+  position: absolute;
+  left: 0;
+  height: 2.5rem;
+  width: 2.5rem;
+}
+
+.client-support div p {
+  margin: 1rem 0;
+}
+
+.client-support div .background {
+  position: absolute;
+  left: 0;
+  width: 327px;
+  height: 186px;
+  margin-right: 15vw;
+  margin-top: 10vh;
+}
+
+/* Web Hosting */
+
+.web-hosting {
+  width: 70%;
+  margin: 5rem auto;
+}
+
+.web-hosting table tr td .select-plan {
+  padding: 0.7rem 2.8rem;
+  background: #fff;
+  border: 1px #021a78 solid;
+  color: #021a78;
+  font-weight: bold;
+  border-radius: 5px;
+  white-space: nowrap;
+}
+
+.web-hosting table tr td .select-plan:hover {
+  background: #021a78;
+  color: #fff;
+}
+
+.web-hosting h1 {
+  font-size: 2rem;
+  font-weight: 500;
+  text-align: center;
+}
+
+.web-hosting h1 span {
+  font-weight: bold;
+}
+
+.web-hosting p {
+  text-align: center;
+  font-size: 1rem;
+}
+
+table {
+  margin: 5rem auto;
+  border-collapse: collapse;
+}
+
+table tr th:not(table tr th:nth-child(1)) {
+  height: 10rem;
+  width: 5rem;
+}
+
+table tr th p {
+  color: #fff;
+}
+
+table tr th:nth-child(2) {
+  border-top-left-radius: 5px;
+  background: #364AFA;
+}
+
+table tr th:nth-child(3) {
+  background: #2E43FC;
+}
+
+table tr th:nth-child(4) {
+  background: #1F34F1;
+}
+
+table tr th:nth-child(5) {
+  background: #2d3cc7;
+}
+
+
+table tr th .price {
+  color: #fff;
+  font-size: 4.5rem;
+}
+
+table th,
+table td {
+  padding: 1rem 2rem;
+  text-align: center;
+}
+
+tr td:nth-child(1) {
+  font-weight: bold;
+}
+
+tr:nth-child(even) {
+  background-color: #f3f3f3;
+}
+
+/* Testimonials */
+
+.container-testimonials {
+  background: #f1f1f1;
+  padding: 5rem 0;
+}
+.testimonials {
+  width: 70%;
+  margin: auto;
+}
+
+.testimonials h1 {
+  font-size: 2.5rem;
+  text-align: center;
+}
+
+.testimonials p {
+  font-size: 1.3rem;
+  text-align: center;
+}
+
+.testimonials .people {
+  margin-top: 5rem;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 2rem;
+}
+
+.testimonials .people .person {
+  padding: 2rem;
+  background: #fff;
+}
+
+.testimonials .people .person .person-name {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+  color: #5d68ff;
+}
+
+.testimonials .people .person .person-image {
+  display: block;
+  margin: 2rem auto;
+  width: 7rem;
+  height: 7rem;
+  border-radius: 360px;
+}
+
+.testimonials .people .person .person-testimonial {
+  font-size: 1rem;
+  font-weight: 300;
+  margin-bottom: 1rem;
+}
+
+.testimonials .people .person .person-profesion {
+  font-size: 1rem;
+  font-weight: 300;
+  margin-bottom: 1rem;
+}
+
+/* Footer */
+
+footer {
+  background: #364AFA;
+}
+
+footer div {
+  width: 70%;
+  height: 70vh;
+  margin: auto;
+  display: flex;
+}
+
+footer div div {
+  display: flex;
+}
