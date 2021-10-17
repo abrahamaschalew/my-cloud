@@ -231,7 +231,7 @@ header .hero div:nth-child(2) img {
 
 .data-protected div p {
   margin-top: 2rem;
-  padding-right: 1rem;
+  margin-right: 5rem;
 }
 
 .data-protected div button {
@@ -447,13 +447,51 @@ footer {
   background: #364AFA;
 }
 
-footer div {
+footer hr {
+  border: 0;
+  height: 2px;
+  background-image: linear-gradient(to right, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.75), rgba(255, 255, 255, 0));
+  width: 70%;
+  margin: 1rem auto;
+  text-align: center;
+}
+
+footer .copyright {
+  text-align: center;
+  color: #fff;
+  padding: 1rem 0;
+}
+
+footer .footer-grid {
+  display: flex;
+  justify-content: center;
   width: 70%;
   height: 70vh;
   margin: auto;
-  display: flex;
+  padding-top: 10vh;
+  color: #fff;
 }
 
-footer div div {
-  display: flex;
+footer .footer-grid .articles .date {
+  color: rgb(111, 228, 2);
+}
+
+footer .footer-grid div h1 {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+footer .footer-grid div {
+  margin-right: 5rem;
+  width: 20%;
+  line-height: 2;
+}
+
+
+footer .footer-grid div:nth-child(3) {
+  width: 30%;
+}
+
+footer .footer-grid div:nth-child(4) {
+  width: 30%;
 }
