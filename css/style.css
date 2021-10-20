@@ -1,8 +1,14 @@
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans&display=swap");
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: sans-serif;
+}
+
+body {
+  overflow-x: hidden;
+  font-family: "Open Sans", sans-serif;
 }
 
 header {
@@ -56,6 +62,7 @@ input {
   display: inline-block;
   position: relative;
   color: #154093;
+  font-weight: bold;
 }
 
 .active:after {
@@ -90,7 +97,7 @@ header nav .brand h1 {
 header nav .brand img {
   position: absolute;
   top: 1rem;
-  left: .3rem;
+  left: 0.3rem;
 }
 
 header nav div {
@@ -169,11 +176,11 @@ header .hero div:nth-child(2) img {
   margin-top: 2rem;
 }
 
-.search-section h1:nth-child(1) {
+.search-section h1:nth-of-type(1) {
   color: #00266f;
 }
 
-.search-section h1:nth-child(2) {
+.search-section h1:nth-of-type(2) {
   color: #0fccc1;
 }
 
@@ -206,7 +213,7 @@ header .hero div:nth-child(2) img {
 
 .search-section div div span {
   font-size: 1rem;
-  color: #0fccc1;
+  color: #c4c4c4;
 }
 
 /* Data Protection */
@@ -254,11 +261,72 @@ header .hero div:nth-child(2) img {
   height: 386px;
 }
 
+/* Why Choose Us */
+
+.why-choose {
+  width: 70%;
+  margin: 2rem auto;
+  text-align: center;
+}
+
+.why-choose > * {
+  margin: 1rem auto;
+}
+
+.why-choose h1 {
+  font-weight: bold;
+  font-size: 2rem;
+}
+
+.why-choose > p:nth-of-type(1) {
+  font-weight: bold;
+  color: rgb(49, 60, 161);
+}
+
+.why-choose > p:nth-of-type(2) {
+  width: 70%;
+}
+
+.why-choose .grid-advantages {
+  display: flex;
+  justify-content: center;
+}
+
+.why-choose .grid-advantages > div:nth-of-type(1) {
+  margin: 1rem 2rem;
+  border-radius: 5px;
+  background: rgba(255, 192, 192, 0.383);
+  padding: 5.5rem 1rem;
+}
+
+.why-choose .grid-advantages > div:nth-of-type(2) {
+  margin: 1rem 2rem;
+  border-radius: 5px;
+  background: rgba(255, 204, 121, 0.377);
+  padding: 5.5rem 1rem;
+}
+
+.why-choose .grid-advantages > div:nth-of-type(3) {
+  margin: 1rem 2rem;
+  border-radius: 5px;
+  background: rgba(228, 231, 185, 0.452);
+  padding: 5.5rem 1rem;
+}
+
+.why-choose .grid-advantages > div > p {
+  padding: 1rem 0;
+}
+
 /* Client Support */
 
 .client-support {
-  width: 40%;
+  width: 70%;
   margin: auto;
+}
+
+.client-support > div:nth-child(2) {
+  width: 70%;
+  margin-left: auto;
 }
 
 .client-support div h1 {
@@ -346,21 +414,20 @@ table tr th p {
 
 table tr th:nth-child(2) {
   border-top-left-radius: 5px;
-  background: #364AFA;
+  background: #364afa;
 }
 
 table tr th:nth-child(3) {
-  background: #2E43FC;
+  background: #2e43fc;
 }
 
 table tr th:nth-child(4) {
-  background: #1F34F1;
+  background: #1f34f1;
 }
 
 table tr th:nth-child(5) {
   background: #2d3cc7;
 }
-
 
 table tr th .price {
   color: #fff;
@@ -441,16 +508,106 @@ tr:nth-child(even) {
   margin-bottom: 1rem;
 }
 
+/* Contact Us */
+
+
+.contact-us {
+  width: 70%;
+  margin: 5rem auto;
+  height: 70vh;
+}
+
+.contact-us .contact-form {
+  width: 90%;
+}
+
+.contact-us .contact-form h1 {
+  font-size: 2.5rem;
+}
+
+.contact-us .contact-form > p {
+  width: 50%;
+  font-weight: 300;
+  margin: 1rem 0;
+}
+
+.contact-us .contact-form {
+  margin: 1rem 0;
+}
+
+.contact-us .contact-form input,
+.contact-us .contact-form textarea {
+  padding: 1rem;
+  margin: 0.5rem 0;
+  width: 51%;
+  border: 1px solid rgb(218, 218, 218);
+}
+
+.contact-us .contact-form button {
+  width: 51%;
+  margin: 0.5rem 0;
+  padding: 1rem;
+  background: rgb(14, 13, 13);
+  text-transform: uppercase;
+  font-weight: bold;
+  letter-spacing: 0.2rem;
+}
+
+.contact-us .contact-form button:hover {
+  opacity: 0.9;
+}
+
+.contact-info {
+  position: absolute;
+  right: 0;
+  margin-top: 6rem;
+  background: rgb(14, 13, 13);
+  color: #fff;
+  padding: 2rem 1rem;
+  height: 50vh;
+  width: 30vw;
+  border-radius: 5px;
+  z-index: 2;
+}
+
+.contact-info ul {
+  display: block;
+}
+
+.contact-info ul li {
+  margin: 0;
+  padding: 0;
+  line-height: 2;
+}
+
+.yellow-bg {
+  position: absolute;
+  width: 10%;
+  padding: 5rem 0;
+  margin-left: auto;
+  right: 0;
+  border: 5rem solid rgb(211, 211, 0);
+  background: rgb(211, 211, 0);
+  height: 100vh;
+}
+
 /* Footer */
 
 footer {
-  background: #364AFA;
+  position: relative;
+  background: #302e2e;
+  z-index: 3;
 }
 
 footer hr {
   border: 0;
   height: 2px;
-  background-image: linear-gradient(to right, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.75), rgba(255, 255, 255, 0));
+  background-image: linear-gradient(
+    to right,
+    rgba(255, 255, 255, 0),
+    rgba(255, 255, 255, 0.75),
+    rgba(255, 255, 255, 0)
+  );
   width: 70%;
   margin: 1rem auto;
   text-align: center;
@@ -486,7 +643,6 @@ footer .footer-grid div {
   width: 20%;
   line-height: 2;
 }
-
 
 footer .footer-grid div:nth-child(3) {
   width: 30%;
