@@ -7,6 +7,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>myCloud</title>
     <link rel="stylesheet" href="css/style.css">
+    <script defer src="node_modules//@fortawesome/fontawesome-free/js/brands.min.js"></script>
+    <script defer src="node_modules//@fortawesome/fontawesome-free/js/solid.min.js"></script>
+    <script defer src="node_modules//@fortawesome/fontawesome-free/js/fontawesome.min.js"></script>
 </head>
 
 <body>
@@ -37,36 +40,23 @@
 
     <section class="search-section">
         <h1><span>All starts with </span><span>a domain</span></h1>
-        <input type="text" placeholder="Search a domain">
+        <div>
+            <p><span class="fa fa-search"></span></p>
+            <input id="search" type="text" placeholder="Search a domain">
+            <button>Go</button>
+        </div>
         <div>
             <div>
                 <p>.com <span>$22.99</span></p>
             </div>
             <div>
-                <p>.org <span>$19.99</span></p>
+                <p>.net <span>$15.99</span></p>
             </div>
             <div>
-                <p>.net <span>$15.99</span></p>
+                <p>.org <span>$19.99</span></p>
             </div>
         </div>
     </section>
-
-    <div class="bg-blue-theme">
-        <section class="data-protected">
-            <div>
-                <h1>Your data is protected</h1>
-                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Minus asperiores repellat quis mollitia
-                    aperiam
-                    voluptate, quos voluptatem voluptas provident cumque, rem consectetur non, laudantium perferendis
-                    iste
-                    tempore maxime dolores numquam?</p>
-                <button>Learn More</button>
-            </div>
-            <div>
-                <img src="images/data-storage.svg" alt="">
-            </div>
-        </section>
-    </div>
 
     <section class="why-choose">
         <h1>Why Choose Us</h1>
@@ -94,6 +84,23 @@
             </div>
         </div>
     </section>
+
+    <div class="bg-blue-theme">
+        <section class="data-protected">
+            <div>
+                <h1>Your data is protected</h1>
+                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Minus asperiores repellat quis mollitia
+                    aperiam
+                    voluptate, quos voluptatem voluptas provident cumque, rem consectetur non, laudantium perferendis
+                    iste
+                    tempore maxime dolores numquam?</p>
+                <button>Learn More</button>
+            </div>
+            <div>
+                <img src="images/data-storage.svg" alt="">
+            </div>
+        </section>
+    </div>
 
     <section class="client-support">
         <div>
@@ -242,6 +249,9 @@
             <li>NY 1002 United States of America</li>
             <li>09:00 - 18:00</li>
         </ul>
+        <div class="icons">
+            
+        </div>
     </div>
     <section class="contact-us">
         <div class="contact-form">
@@ -295,6 +305,8 @@
         <hr>
         <p class="copyright">Copyright &copy; 2021 myCloud. All right not reserved you can play around it.</p>
     </footer>
+
+
 </body>
 
 </html>
