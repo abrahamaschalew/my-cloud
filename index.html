@@ -14,30 +14,32 @@
 
 <body>
     <header>
-        <nav>
-            <div class="brand">
-                <img src="images/logo.svg" alt="">
-                <h1><span class="my">my</span><span class="cloud">Cloud</span></h1>
-            </div>
-            <ul>
-                <li><a href="#" class="active">Home</a></li>
-                <li><a href="#">Services</a></li>
-                <li><a href="#">Hosting</a></li>
-                <li><a href="#">Domain</a></li>
-                <li><a href="#">Contact US</a></li>
-            </ul>
-        </nav>
+        <div class="nav-body" id="nav-body">
+            <nav>
+                <div class="brand">
+                    <p><span class="my">My</span><span class="cloud">Cloud</span></p>
+                </div>
+                <ul>
+                    <li><a href="#" class="active">Home</a></li>
+                    <li><a href="#" onclick="scrollSection('why-choose')">Services</a></li>
+                    <li><a href="#" onclick="scrollSection('web-hosting')">Hosting</a></li>
+                    <li><a href="#" onclick="scrollSection('search-section')">Domain</a></li>
+                    <li><a href="#" onclick="scrollSection('contact-us')">Contact US</a></li>
+                </ul>
+            </nav>
+        </div>
         <div class="hero">
             <div>
                 <h1>Your dream website.</h1>
-                <button class="get-started">get started <span>>></span></button>
+                <p>We have everything you need to take your business further, with security, stability and yet we provide the most current features on the market.</p>
+                <button class="get-started">Get Started </button>
             </div>
             <div>
                 <img src="images/hero-background.svg" alt="">
             </div>
         </div>
     </header>
-
+    
     <section class="search-section">
         <h1><span>All starts with </span><span>a domain</span></h1>
         <div>
@@ -50,10 +52,10 @@
                 <p>.com <span>$22.99</span></p>
             </div>
             <div>
-                <p>.net <span>$15.99</span></p>
+                <p>.org <span>$19.99</span></p>
             </div>
             <div>
-                <p>.org <span>$19.99</span></p>
+                <p>.net <span>$15.99</span></p>
             </div>
         </div>
     </section>
@@ -135,7 +137,6 @@
             </div>
         </div>
     </section>
-
     <section class="web-hosting">
         <h1>Web <span>Hosting</span></h1>
         <p>Choose one of our web hosting solutions</p>
@@ -217,41 +218,39 @@
                 <div class="person">
                     <img class="person-image" src="images/person-1.jpg" alt="">
                     <p class="person-name">Jane Doe</p>
-                    <p class="person-testimonial">Lorem ipsum dolor sit amet, sed consectetur Ut minim veniam,
-                        quis aliquip ex ea.</p>
-                    <p class="person-profesion">CEO</>
+                    <p class="person-testimonial">"Lorem ipsum dolor sit amet, sed consectetur Ut minim veniam,
+                        quis aliquip ex ea."</p>
+                    <p class="person-profesion">Front-end Enginner</>
                 </div>
                 <div class="person">
-                    <img class="person-image" src="images/person-2.jpg" alt="">
-                    <p class="person-name">Abraham Aschalew</p>
-                    <p class="person-testimonial">Lorem ipsum dolor sit amet, sed consectetur Ut minim veniam,
-                        quis aliquip ex ea.</p>
-                    <p class="person-profesion">CEO</>
-                </div>
-                <div class="person">
-                    <img class="person-image" src="images/person-3.jpg" alt="">
+                    <img class="person-image" src="images/person-3.jpeg" alt="">
                     <p class="person-name">Gary Simon</p>
-                    <p class="person-testimonial">Lorem ipsum dolor sit amet, sed consectetur Ut minim veniam,
-                        quis aliquip ex ea.</p>
+                    <p class="person-testimonial">"Lorem ipsum dolor sit amet, sed consectetur Ut minim veniam,
+                        quis aliquip ex ea."</p>
+                    <p class="person-profesion">Full Stack Enginner</>
+                </div>
+                <div class="person">
+                    <img class="person-image" src="images/person-2.jpeg" alt="">
+                    <p class="person-name">Olivia Robert</p>
+                    <p class="person-testimonial">"Lorem ipsum dolor sit amet, sed consectetur Ut minim veniam,
+                        quis aliquip ex ea."</p>
                     <p class="person-profesion">CEO</>
                 </div>
             </div>
         </section>
     </div>
-
-    <div class="yellow-bg"></div>
+   
+    <div class="yellow-bg">
+        
+    </div>
     <div class="contact-info">
         <h1>Info</h1>
         <ul>
-            <li>hello@mycloud.com</li>
-            <li>530-388-1785</li>
-            <li>27 Division St, New York,</li>
-            <li>NY 1002 United States of America</li>
-            <li>09:00 - 18:00</li>
+            <li><span class="fa fa-envelope"></span>hello@mycloud.com</li>
+            <li><span class="fa fa-phone"></span>530-388-1785</li>
+            <li><span class="fa fa-map-marker"></span>27 Division St, New York, USA</li>
+            <li><span class="fa fa-history"></span>09:00 - 18:00</li>
         </ul>
-        <div class="icons">
-            
-        </div>
     </div>
     <section class="contact-us">
         <div class="contact-form">
@@ -306,7 +305,7 @@
         <p class="copyright">Copyright &copy; 2021 myCloud. All right not reserved you can play around it.</p>
     </footer>
 
-
+    <script src="js/app.js"></script>
 </body>
 
 </html>
