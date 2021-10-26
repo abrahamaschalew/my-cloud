@@ -22,14 +22,14 @@ header {
   background-image: linear-gradient(315deg, #eec0c6 0%, #7ee8fa 74%);
 }
 
-a {
+header a {
   text-decoration: none;
   color: #000;
   text-transform: uppercase;
   font-weight: 500;
 }
 
-a:hover {
+header a:hover {
   color: #154093;
 }
 
@@ -56,10 +56,22 @@ input {
   border: 0;
 }
 
+
 .my {
   color: #000;
   font-weight: normal;
   font-size: 2.125rem;
+}
+
+.fa-twitter, .fa-facebook, .fa-instagram, .fa-linkedin {
+  font-size: 1.5rem;
+  text-align: center;
+  text-decoration: none;
+  border-radius: 50%;
+}
+
+.fa-twitter:hover, .fa-facebook:hover, .fa-instagram:hover, .fa-linkedin:hover {
+  opacity: 0.7;
 }
 
 .cloud {
@@ -303,7 +315,7 @@ header .hero div:nth-child(2) img {
 
 .why-choose {
   width: 70%;
-  margin: 0 auto 2rem auto;
+  margin: 0 auto 5rem auto;
   text-align: center;
 }
 
@@ -328,9 +340,24 @@ header .hero div:nth-child(2) img {
 .why-choose .grid-advantages {
   display: flex;
   justify-content: center;
+  margin: 1rem auto;
 }
 
-.why-choose .grid-advantages > div:nth-of-type(1) {
+
+.why-choose .grid-advantages > div  {
+  margin: 1rem 2rem;
+  border-radius: 5px;
+  padding: 1rem;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+}
+
+.why-choose .grid-advantages img {
+  width: 100%;
+  padding: 0;
+  margin: 0;
+}
+
+/* .why-choose .grid-advantages > div:nth-of-type(1) {
   margin: 1rem 2rem;
   border-radius: 5px;
   background: rgba(255, 192, 192, 0.637);
@@ -349,7 +376,7 @@ header .hero div:nth-child(2) img {
   border-radius: 5px;
   background: rgba(0, 85, 33, 0.178);
   padding: 5.5rem 1rem;
-}
+} */
 
 .why-choose .grid-advantages > div > p {
   padding: 1rem 0;
@@ -404,6 +431,10 @@ header .hero div:nth-child(2) img {
 .web-hosting {
   width: 70%;
   margin: 5rem auto;
+}
+
+.web-hosting table {
+  overflow-x: auto;
 }
 
 .web-hosting table tr td {
@@ -677,13 +708,19 @@ footer .footer-grid {
   color: #fff;
 }
 
-footer .footer-grid .articles .date {
-  color: rgb(111, 228, 2);
-}
+
 
 footer .footer-grid div h1 {
   font-size: 1.5rem;
   margin-bottom: 1rem;
+}
+
+footer .footer-grid div a {
+  font-size: 1rem;
+  color: #fff;
+  width: 100%;
+  text-decoration: none;
+  display: block;
 }
 
 footer .footer-grid div {
@@ -691,6 +728,7 @@ footer .footer-grid div {
   width: 20%;
   line-height: 2;
 }
+
 
 footer .footer-grid div:nth-child(3) {
   width: 30%;
