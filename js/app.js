@@ -12,6 +12,9 @@
 
     var checkScroll = function () {
 
+        const mediaQ = window.matchMedia("(max-width: 700px)");
+
+        if (mediaQ.matches) return;
         /*
         ** Find the direction of scroll
         ** 0 - initial, 1 - up, 2 - down
@@ -50,14 +53,37 @@
 
     window.addEventListener('scroll', checkScroll);
 
+    document.querySelector('.bar').addEventListener('click', () => {
+        document.querySelector('.menu-list').classList.toggle('show');
+        document.querySelector('.close').classList.toggle('show');
+        document.querySelector('.bar').classList.toggle("show-none");
+    })
+
+
+    document.querySelector('.close').addEventListener('click', () => {
+        document.querySelector('.menu-list').classList.toggle('show');
+        document.querySelector('.close').classList.toggle('show');
+        document.querySelector('.bar').classList.toggle("show-none");
+    })
+
 })();
 
-function scrollSection (elementClass) {
-    console.log(`.${elementClass}`)
- 
+
+
+function scrollSection(elementClass) {
+
+    // check if it's mobile. if it's close the view after clicked
+    const mediaQ = window.matchMedia("(max-width: 700px)");
+    if (mediaQ.matches) {
+        document.querySelector('.menu-list').classList.toggle('show');
+        document.querySelector('.close').classList.toggle('show');
+        document.querySelector('.bar').classList.toggle("show-none")
+    }
+
+
     setTimeout(() => {
         document.querySelector(`.${elementClass}`).scrollIntoView({
             behavior: 'smooth'
         })
-    },1)
+    }, 1)
 }

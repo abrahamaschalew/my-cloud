@@ -22,14 +22,14 @@ header {
   background-image: linear-gradient(315deg, #eec0c6 0%, #7ee8fa 74%);
 }
 
-header a {
+header .nav-body nav ul li a {
   text-decoration: none;
   color: #000;
   text-transform: uppercase;
   font-weight: 500;
 }
 
-header a:hover {
+header .nav-body nav ul li a:hover {
   color: #154093;
 }
 
@@ -56,21 +56,26 @@ input {
   border: 0;
 }
 
-
 .my {
   color: #000;
   font-weight: normal;
   font-size: 2.125rem;
 }
 
-.fa-twitter, .fa-facebook, .fa-instagram, .fa-linkedin {
+.fa-twitter,
+.fa-facebook,
+.fa-instagram,
+.fa-linkedin {
   font-size: 1.5rem;
   text-align: center;
   text-decoration: none;
   border-radius: 50%;
 }
 
-.fa-twitter:hover, .fa-facebook:hover, .fa-instagram:hover, .fa-linkedin:hover {
+.fa-twitter:hover,
+.fa-facebook:hover,
+.fa-instagram:hover,
+.fa-linkedin:hover {
   opacity: 0.7;
 }
 
@@ -104,8 +109,8 @@ header .nav-body {
   top: 0;
   width: 100%;
   z-index: 100;
-  transition: all .3s ease;
-  box-shadow: 0 1px 25px rgba(0,0,0, .1);
+  transition: all 0.3s ease;
+  box-shadow: 0 1px 25px rgba(0, 0, 0, 0.1);
 }
 
 header .nav-body.hide {
@@ -122,6 +127,14 @@ header .nav-body nav {
   background: #fff;
 }
 
+header .nav-body nav .nav-menu .bar {
+  display: none;
+}
+
+header .nav-body nav .nav-menu .close {
+  display: none;
+}
+
 header .nav-body nav .brand {
   margin-right: auto;
 }
@@ -134,6 +147,7 @@ header .nav-body nav ul {
 header .nav-body nav ul li {
   margin: 1rem 0 1rem 1rem;
 }
+
 
 /* Hero */
 
@@ -165,13 +179,12 @@ header .hero div p {
 header .hero div .get-started {
   text-transform: uppercase;
   padding: 1rem 2rem;
-  border: 2px solid rgb(49, 60, 161);;
+  border: 2px solid rgb(49, 60, 161);
   border-radius: 43px;
   background: #fff;
-  color: rgb(49, 60, 161);;
+  color: rgb(49, 60, 161);
   font-weight: bold;
 }
-
 
 header .hero div .get-started:hover {
   opacity: 0.9;
@@ -343,8 +356,7 @@ header .hero div:nth-child(2) img {
   margin: 1rem auto;
 }
 
-
-.why-choose .grid-advantages > div  {
+.why-choose .grid-advantages > div {
   margin: 1rem 2rem;
   border-radius: 5px;
   padding: 1rem;
@@ -708,8 +720,6 @@ footer .footer-grid {
   color: #fff;
 }
 
-
-
 footer .footer-grid div h1 {
   font-size: 1.5rem;
   margin-bottom: 1rem;
@@ -729,11 +739,73 @@ footer .footer-grid div {
   line-height: 2;
 }
 
-
 footer .footer-grid div:nth-child(3) {
   width: 30%;
 }
 
 footer .footer-grid div:nth-child(4) {
   width: 30%;
+}
+
+@media (max-width: 700px) {
+  .nav-menu {
+    display: block;
+  }
+
+  .menu-btn:hover {
+    opacity: 0.5;
+  }
+
+  header .nav-body nav {
+    width: 100%;
+  }
+
+  .active::after {
+    border-bottom: none;
+  }
+
+  .nav-body .menu-list {
+    display: none;
+  }
+
+  header .nav-body .menu-list.show{
+    position: absolute;
+    left: 0;
+    top: 0;
+    display: block;
+    width: 100%;
+    margin: auto;
+    padding: 30px;
+    text-align: center;
+    background: #f2f2f2;
+    opacity: 0.9;
+    z-index: 2;
+  }
+
+  header .nav-body nav .nav-menu .close.show {
+    position: absolute;
+    right: 0;
+    top: 0;
+    display: block;
+    margin: 0.5rem 1rem;
+    color: #000;
+    z-index: 3;
+  }
+
+  header .nav-body nav .nav-menu .bar {
+    display: block;
+  }
+
+  header .nav-body nav .nav-menu .bar.show-none {
+    display: none;
+  }
+
+  header .nav-body nav .brand {
+    margin-left: 1rem;
+  }
+
+  header .nav-body nav .nav-menu {
+    margin-right: 1rem;
+  }
+
 }
