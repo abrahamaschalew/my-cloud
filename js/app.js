@@ -12,7 +12,7 @@
 
     var checkScroll = function () {
 
-        const mediaQ = window.matchMedia("(max-width: 700px)");
+        const mediaQ = window.matchMedia("(max-width: 900px)");
 
         if (mediaQ.matches) return;
         /*
@@ -73,7 +73,7 @@
 function scrollSection(elementClass) {
 
     // check if it's mobile. if it's close the view after clicked
-    const mediaQ = window.matchMedia("(max-width: 700px)");
+    const mediaQ = window.matchMedia("(max-width: 900px)");
     if (mediaQ.matches) {
         document.querySelector('.menu-list').classList.toggle('show');
         document.querySelector('.close').classList.toggle('show');
