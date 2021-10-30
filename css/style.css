@@ -285,6 +285,8 @@ header .hero div:nth-child(2) img {
   border-top-right-radius: -100px 100px;
 }
 
+
+
 .data-protected {
   width: 70%;
   margin: 2rem auto;
@@ -428,8 +430,19 @@ header .hero div:nth-child(2) img {
   margin: 5rem auto;
 }
 
-.web-hosting table {
+table {
   overflow-x: auto;
+}
+
+table {
+  display: block;
+  overflow-x: auto;
+  white-space: nowrap;
+}
+
+table tbody {
+  display: table;
+  width: 100%;
 }
 
 .web-hosting table tr td {
@@ -745,6 +758,23 @@ footer .footer-grid div {
     padding: 0;
     font-size: 0.5rem;
   }
+
+  .client-support div h1 {
+    margin-top: 2.5rem;
+    font-size: 1.55rem;
+    font-weight: 500;
+  }
+  
+  .client-support div div {
+    padding-left: 3rem;
+  }
+
+  .client-support div h2 {
+    font-size: 1.2rem;
+  }
+  
+
+
 }
 
 @media (max-width: 900px) {
