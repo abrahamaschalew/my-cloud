@@ -936,3 +936,10 @@ footer .footer-grid div {
     width: 60%;
   }
 }
+
+
+@media (max-width: 1024px) {
+  .data-protected div img {
+    display: none;
+  }
+}
