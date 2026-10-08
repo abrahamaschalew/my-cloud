@@ -1,0 +1,9 @@
+{
+  "uuid": "clothesline@abrahamaschalew.github.io",
+  "name": "Clothesline",
+  "description": "Every screenshot you take hangs on a line at the top of your screen. Push the pointer against the top edge to bring it down. Click to copy, double click to open, press and hold to mark up. Runs entirely on your computer, with no network access.",
+  "shell-version": ["45", "46", "47", "48", "49", "50"],
+  "settings-schema": "org.gnome.shell.extensions.clothesline",
+  "url": "https://github.com/abrahamaschalew/clothesline",
+  "version-name": "1.0"
+}

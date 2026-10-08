@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schemalist>
+  <schema id="org.gnome.shell.extensions.clothesline" path="/org/gnome/shell/extensions/clothesline/">
+    <key name="toggle-line" type="as">
+      <default><![CDATA[['<Shift><Super>l']]]></default>
+      <summary>Show or hide the line</summary>
+    </key>
+    <key name="hanging" type="as">
+      <default>[]</default>
+      <summary>Screenshots currently on the line</summary>
+      <description>Kept so the line survives locking the screen and logging out.</description>
+    </key>
+    <key name="folder" type="s">
+      <default>''</default>
+      <summary>Folder to watch</summary>
+      <description>Empty means the folder GNOME saves screenshots to, ~/Pictures/Screenshots.</description>
+    </key>
+    <key name="max-items" type="i">
+      <range min="1" max="20"/>
+      <default>8</default>
+      <summary>How many screenshots hang at once</summary>
+    </key>
+    <key name="peek-on-new" type="b">
+      <default>true</default>
+      <summary>Show each new screenshot for a moment</summary>
+    </key>
+    <key name="edge-reveal" type="b">
+      <default>true</default>
+      <summary>Bring the line down by pushing the pointer against the top edge</summary>
+    </key>
+    <key name="show-indicator" type="b">
+      <default>true</default>
+      <summary>Show the icon in the top bar</summary>
+    </key>
+    <key name="editor" type="s">
+      <default>''</default>
+      <summary>App used to mark up screenshots</summary>
+      <description>A desktop file id such as com.github.maoschanz.drawing.desktop. Empty means the first one found of Drawing, Pinta, KolourPaint and GIMP.</description>
+    </key>
+  </schema>
+</schemalist>
