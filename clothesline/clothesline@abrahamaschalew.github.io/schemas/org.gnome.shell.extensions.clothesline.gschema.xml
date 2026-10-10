@@ -20,6 +20,12 @@
       <default>8</default>
       <summary>How many screenshots hang at once</summary>
     </key>
+    <key name="card-size" type="i">
+      <range min="5" max="25"/>
+      <default>12</default>
+      <summary>Screenshot size</summary>
+      <description>How much of the screen's width each screenshot takes, in percent.</description>
+    </key>
     <key name="peek-on-new" type="b">
       <default>true</default>
       <summary>Show each new screenshot for a moment</summary>

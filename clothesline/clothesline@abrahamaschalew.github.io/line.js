@@ -5,12 +5,12 @@ import St from 'gi://St';
 
 import * as Main from 'resource:///org/gnome/shell/ui/main.js';
 
-import {Card, CARD_WIDTH} from './card.js';
+import {Card, cardHeightFor} from './card.js';
 import {clearThumbnails} from './thumbnails.js';
 
-const HEIGHT = 210;
 const ROPE_TOP = 10;
-const SPACING = 174;
+const MAX_SAG = 30;
+const CARD_GAP = 24;
 const PIN_ABOVE = 9.5;
 /** How long the pointer may be away before the line tucks itself away. */
 const AWAY_MS = 450;
@@ -19,7 +19,7 @@ const {EASE_IN_QUAD, EASE_OUT_BACK} = Clutter.AnimationMode;
 
 /** The rope hangs as a parabola from edge to edge of the screen. */
 function sag(width) {
-    return Math.min(30, width * 0.018);
+    return Math.min(MAX_SAG, width * 0.018);
 }
 
 function ropeY(x, width) {
@@ -52,7 +52,7 @@ export class Line {
         clearThumbnails();
 
         this._wrapper = new St.Widget({clip_to_allocation: true, visible: false});
-        this._strip = new St.Widget({translation_y: -(HEIGHT + 12)});
+        this._strip = new St.Widget();
         this._wrapper.add_child(this._strip);
 
         this._rope = new St.DrawingArea({height: 60});
@@ -61,6 +61,9 @@ export class Line {
 
         this._hint = new St.Label({style_class: 'clothesline-hint', text: 'Take a screenshot and it will hang here'});
         this._strip.add_child(this._hint);
+
+        this._resize();
+        this._strip.translation_y = this._tuckedY;
 
         // Above windows, below notifications, like the top bar. Each photo adds
         // itself to the input region (see hang), the line as a whole does not.
@@ -78,7 +81,14 @@ export class Line {
                 if (this._revealed && this._monitor?.inFullscreen)
                     this._hideNow();
             })],
-            [Main.layoutManager, Main.layoutManager.connect('monitors-changed', () => this._hideNow())],
+            [Main.layoutManager, Main.layoutManager.connect('monitors-changed', () => {
+                this._hideNow();
+                this._reloadPhotos();
+            })],
+            [settings, settings.connect('changed::card-size', () => {
+                this._resize();
+                this._reloadPhotos();
+            })],
         ];
     }
 
@@ -173,11 +183,48 @@ export class Line {
     }
 
     _capacity() {
-        const width = this._width || Main.layoutManager.primaryMonitor?.width || 1920;
-        return Math.max(1, Math.floor((width - 40 - CARD_WIDTH) / SPACING) + 1);
+        return Math.max(1, Math.floor((this._screenWidth - 40 - this._cardWidth) / (this._cardWidth + CARD_GAP)) + 1);
+    }
+
+    /** Loads every photo again, at the size the cards have now. */
+    _reloadPhotos() {
+        for (const card of this._cards.filter(c => c.loaded))
+            this.reload(card.path);
     }
 
     // MARK: Layout
+
+    get cardWidth() {
+        return this._cardWidth;
+    }
+
+    /** Photos load at the card size of the widest screen, so they only ever scale down. */
+    get largestCardWidth() {
+        return this._cardWidthFor(Math.max(...Main.layoutManager.monitors.map(m => m.width)));
+    }
+
+    get _screenWidth() {
+        return this._width || Main.layoutManager.primaryMonitor?.width || 1920;
+    }
+
+    get _tuckedY() {
+        return -(this._height + 12);
+    }
+
+    _cardWidthFor(screenWidth) {
+        return Math.round(screenWidth * this.settings.get_int('card-size') / 100);
+    }
+
+    /** Cards take the share of the screen's width set in the preferences; the line grows to hold them. */
+    _resize() {
+        this._cardWidth = this._cardWidthFor(this._screenWidth);
+        this._height = ROPE_TOP + MAX_SAG + cardHeightFor(this._cardWidth);
+        this._wrapper.set_size(this._screenWidth, this._height);
+        this._strip.set_size(this._screenWidth, this._height);
+        for (const card of this._cards.filter(c => c.loaded))
+            card.fit(this._cardWidth);
+        this._layout(false);
+    }
 
     _place(monitor) {
         const isPrimary = monitor.index === Main.layoutManager.primaryIndex;
@@ -185,11 +232,9 @@ export class Line {
         this._monitor = monitor;
         this._width = monitor.width;
         this._wrapper.set_position(monitor.x, monitor.y + top);
-        this._wrapper.set_size(monitor.width, HEIGHT);
-        this._strip.set_size(monitor.width, HEIGHT);
         this._rope.width = monitor.width;
         this._rope.queue_repaint();
-        this._layout(false);
+        this._resize();
     }
 
     _layout(animate) {
@@ -197,10 +242,11 @@ export class Line {
         if (!width)
             return;
         const cards = this._cards.filter(c => c.loaded);
-        const total = Math.max(cards.length - 1, 0) * SPACING;
+        const spacing = this._cardWidth + CARD_GAP;
+        const total = Math.max(cards.length - 1, 0) * spacing;
         cards.forEach((card, i) => {
-            const cx = width / 2 - total / 2 + i * SPACING;
-            card.moveTo(Math.round(cx - CARD_WIDTH / 2), Math.round(ropeY(cx, width) - PIN_ABOVE), animate);
+            const cx = width / 2 - total / 2 + i * spacing;
+            card.moveTo(Math.round(cx - this._cardWidth / 2), Math.round(ropeY(cx, width) - PIN_ABOVE), animate);
         });
 
         const [, natWidth] = this._hint.get_preferred_width(-1);
@@ -294,7 +340,7 @@ export class Line {
         this._peekUntil = 0;
         this._stopTimers();
         this._strip.ease({
-            translation_y: -(HEIGHT + 12),
+            translation_y: this._tuckedY,
             duration: 220,
             mode: EASE_IN_QUAD,
             onComplete: () => {
@@ -318,7 +364,7 @@ export class Line {
         this._peekUntil = 0;
         this._stopTimers();
         this._strip.remove_all_transitions();
-        this._strip.translation_y = -(HEIGHT + 12);
+        this._strip.translation_y = this._tuckedY;
         this._wrapper.hide();
         this._regionsChanged();
     }

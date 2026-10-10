@@ -13,6 +13,12 @@ export default class ClotheslinePreferences extends ExtensionPreferences {
         const line = new Adw.PreferencesGroup({title: 'The Line'});
         page.add(line);
 
+        const size = Adw.SpinRow.new_with_range(5, 25, 1);
+        size.title = 'Screenshot Size';
+        size.subtitle = 'Percent of the screen’s width each screenshot takes';
+        settings.bind('card-size', size, 'value', Gio.SettingsBindFlags.DEFAULT);
+        line.add(size);
+
         const edge = new Adw.SwitchRow({
             title: 'Push Against the Top Edge',
             subtitle: 'Bring the line down by pushing the pointer against the top of the screen',

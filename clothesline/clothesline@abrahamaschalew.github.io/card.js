@@ -9,9 +9,9 @@ import * as PopupMenu from 'resource:///org/gnome/shell/ui/popupMenu.js';
 import * as Actions from './actions.js';
 import {makeThumbnail, deleteThumbnail} from './thumbnails.js';
 
-export const CARD_WIDTH = 150;
-const PHOTO_MAX_WIDTH = CARD_WIDTH - 14;
-const PHOTO_MAX_HEIGHT = 104;
+/** The photo's box is this much narrower than the card, and this tall for its width. */
+const PHOTO_MARGIN = 14;
+const PHOTO_BOX_RATIO = 0.765;
 const INSET = 4;
 const RADIUS = 16;
 /** Room around the frame for its shadow. */
@@ -26,6 +26,15 @@ const DOUBLE_CLICK_MS = 400;
 
 const {EASE_OUT_QUAD, EASE_IN_QUAD, EASE_IN_OUT_QUAD, EASE_IN_OUT_SINE, EASE_OUT_BACK} =
     Clutter.AnimationMode;
+
+export function cardHeightFor(cardWidth) {
+    return FRAME_TOP + photoBox(cardWidth).height + INSET * 2 + 44;
+}
+
+function photoBox(cardWidth) {
+    const width = cardWidth - PHOTO_MARGIN;
+    return {width, height: Math.round(width * PHOTO_BOX_RATIO)};
+}
 
 /**
  * One photo with its clip. All the charm lives here: it drops onto the line,
@@ -42,13 +51,8 @@ export class Card {
         this._timeouts = new Set();
         this._lastClick = 0;
 
-        // The actor turns around the clip, at the top centre.
-        this.actor = new St.Widget({
-            width: CARD_WIDTH,
-            height: FRAME_TOP + PHOTO_MAX_HEIGHT + INSET * 2 + 44,
-            opacity: 0,
-            visible: false,
-        });
+        // The actor turns around the clip, at the top centre. It is sized by fit().
+        this.actor = new St.Widget({opacity: 0, visible: false});
         this.actor.set_pivot_point(0.5, 0);
         this.actor.rotation_angle_z = this.tilt;
 
@@ -63,21 +67,20 @@ export class Card {
         this.frame.connect('repaint', area => this._drawFrame(area));
         this.actor.add_child(this.frame);
 
-        const clip = new St.DrawingArea({
+        this._clip = new St.DrawingArea({
             width: CLIP_WIDTH + 4,
             height: CLIP_HEIGHT + 4,
-            x: (CARD_WIDTH - CLIP_WIDTH) / 2 - 2,
             y: -2,
         });
-        clip.connect('repaint', area => drawClip(area));
-        this.actor.add_child(clip);
+        this._clip.connect('repaint', area => drawClip(area));
+        this.actor.add_child(this._clip);
 
         this._copied = new St.Label({
             style_class: 'clothesline-copied',
             text: 'Copied',
             x_align: Clutter.ActorAlign.CENTER,
         });
-        this._copiedBin = new St.Bin({child: this._copied, width: CARD_WIDTH, opacity: 0});
+        this._copiedBin = new St.Bin({child: this._copied, opacity: 0});
         this.actor.add_child(this._copiedBin);
 
         this.frame.connect('notify::hover', () => this._hoverChanged());
@@ -91,9 +94,11 @@ export class Card {
 
     // MARK: Loading
 
+    /** Loads the photo at the card size of the widest screen, so fit() only ever scales it down. */
     async load() {
         const scale = St.ThemeContext.get_for_stage(global.stage).scale_factor;
-        const thumb = await makeThumbnail(this.path, PHOTO_MAX_WIDTH, PHOTO_MAX_HEIGHT, scale);
+        const largest = photoBox(this.line.largestCardWidth);
+        const thumb = await makeThumbnail(this.path, largest.width, largest.height, scale);
         if (this.destroyed) {
             deleteThumbnail(thumb.path);
             return;
@@ -101,16 +106,29 @@ export class Card {
         // Keep the small image in memory and drop the file straight away.
         this._photo = Cairo.ImageSurface.createFromPNG(thumb.path);
         deleteThumbnail(thumb.path);
-        this._photoWidth = Math.round(thumb.width);
-        this._photoHeight = Math.round(thumb.height);
+        this._thumbWidth = thumb.width;
+        this._thumbHeight = thumb.height;
+        this.fit(this.line.cardWidth);
+        this.loaded = true;
+    }
+
+    /** Sizes the card to cardWidth and scales the photo to fit its box. */
+    fit(cardWidth) {
+        const box = photoBox(cardWidth);
+        const shrink = Math.min(box.width / this._thumbWidth, box.height / this._thumbHeight);
+        this._photoWidth = Math.round(this._thumbWidth * shrink);
+        this._photoHeight = Math.round(this._thumbHeight * shrink);
+
+        this.actor.set_size(cardWidth, cardHeightFor(cardWidth));
+        this._clip.x = (cardWidth - CLIP_WIDTH) / 2 - 2;
+        this._copiedBin.width = cardWidth;
 
         const w = this._photoWidth + INSET * 2, h = this._photoHeight + INSET * 2;
         this.frame.set_size(w + PAD * 2, h + PAD * 2);
         this.frame.set_pivot_point(0.5, PAD / (h + PAD * 2));
-        this.frame.x = Math.round((CARD_WIDTH - w) / 2) - PAD;
+        this.frame.x = Math.round((cardWidth - w) / 2) - PAD;
         this._copiedBin.y = FRAME_TOP + h + 10;
         this.frame.queue_repaint();
-        this.loaded = true;
     }
 
     // MARK: Motion
